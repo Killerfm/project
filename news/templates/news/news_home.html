@@ -1,0 +1,29 @@
+{% extends 'main/shablon.html'%}
+{% block titlecontent %}
+Новости
+{% endblock %}
+
+{% block content %}
+
+<h3 style="color:yellow">Причины</h3>
+
+    {% if news%}
+        {% for el in news %}
+            <div style="
+    border: 2px solid red;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;">
+                <h4 style="color:red">{{el.name}}</h4>
+                <p style="color:red">{{el.main_text}}</p>
+                <p style="color:red">{{el.date}}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4>Пусто...</h4>
+    {%endif%}
+<a href="{% url 'create' %}"><button> добавить причину</button></a>
+<br>
+<a href="{% url 'result_anime' %}">хотите посмотреть на анимешника 3 стадии ??? Тогда кликай сюда !</a>
+
+{% endblock %}
