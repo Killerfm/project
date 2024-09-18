@@ -1,43 +1,26 @@
-from .models import FirstTable, Commentaries
-from django.forms import ModelForm, TextInput, DateInput, Textarea
+from .models import FirstTable
+from django.forms import ModelForm, TextInput, DateInput, Textarea, FileInput
 
 
 class FirstTableForm(ModelForm):
     class Meta:
         model = FirstTable
-        fields = ['name', 'main_text', 'date']
+        fields = ['name', 'main_text', 'date', 'img']
         widgets = {
             "name": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'название',
+                'placeholder': 'name',
             }),
             "main_text": Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'основной текст',
+                'placeholder': 'main text',
+            }),
+            "img": FileInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'image'
             }),
             "date": DateInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'дата'
+                'placeholder': 'date'
             })
-        }
-
-
-class CommentariesForm(ModelForm):
-    class Meta:
-        model = Commentaries
-        fields = ['author', 'commentary', 'date', 'nameb']
-        widgets = {
-            "author": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'автор',
-            }),
-            "commentary": Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'основной текст',
-            }),
-            "date": DateInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'дата'
-            })
-
         }

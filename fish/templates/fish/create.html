@@ -1,12 +1,13 @@
 {% extends 'main/shablon.html'%}
-{% block titlecontent %} Добавить {% endblock %}
+{% block titlecontent %} add fish {% endblock %}
 {% block content %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {{form.name}}
     {{form.main_text}}
     {{form.date}}
-    <button class="btn btn-success" type="submit">Добавить</button>
-    <button class="btn btn-success" type="reset">Очистить поля</button>
+    {{form.img}}
+    <button class="btn btn-success" type="submit">add</button>
+    <button class="btn btn-success" type="reset">clear</button>
     {%csrf_token%}
     <span>{{error}}</span>
 </form>

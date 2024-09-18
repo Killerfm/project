@@ -1,14 +1,14 @@
 {% extends 'main/shablon.html'%}
 {% block titlecontent %}
-Новости
+Fish list
 {% endblock %}
 
 {% block content %}
 
-<h3 style="color:yellow">Причины</h3>
+<h3 style="color:yellow">Fish</h3>
 
-    {% if news%}
-        {% for el in news %}
+    {% if fish%}
+        {% for el in fish %}
             <div style="
     border: 2px solid red;
     padding: 10px;
@@ -16,14 +16,18 @@
     border-radius: 5px;">
                 <h4 style="color:green">{{el.name}}</h4>
                 <p style="color:red">{{el.main_text}}</p>
-                <p style="color:pink">{{el.date}}</p>
+                <p style="color:black">{{el.date}}</p>
+                <p>{{el.img}}</p>
+                <img id = "img"  height="300" width="250" src="">
+                <script>
+                    var imageSrc = "../../../media/"+"{{el.img}}";
+                    document.getElementById("img").src = imageSrc;
+                </script>
             </div>
         {% endfor %}
     {% else %}
-        <h4>Пусто...</h4>
+        <h4>Empty...</h4>
     {%endif%}
-<a href="{% url 'create' %}"><button> добавить причину</button></a>
-<br>
-<a href="{% url 'result_anime' %}">хотите посмотреть на анимешника 3 стадии ??? Тогда кликай сюда !</a>
+<a href="{% url 'create' %}"><button> add fish</button></a>
 
 {% endblock %}

@@ -1,36 +1,33 @@
 from django.shortcuts import render, redirect
-from .models import FirstTable, Commentaries
-from .forms import FirstTableForm, CommentariesForm
+from .models import FirstTable
+from .forms import FirstTableForm
 # Create your views here.
 
 
-def news_home(request):
-    news = FirstTable.objects.all()
+def fish_home(request):
+    fish = FirstTable.objects.all()
     if request.method == 'POST':
-        form = CommentariesForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/news')
-    return render(request, 'news/news_home.html', {'news': news})
+        if fish.is_valid():
+            fish.save()
+            return redirect('/fish')
+    return render(request, 'fish/fish_home.html', {'fish': fish})
 
 
 def create(request):
     error = ''
     if request.method == 'POST':
-        form = FirstTableForm(request.POST)
+        form = FirstTableForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
 
-            return redirect('/news')
+            return redirect('/fish')
 
         else:
-            error = "Неверная форма заполнения"
+            error = "Incorrect form of filling in"
     form = FirstTableForm()
     data = {'form': form,
             'error': error}
-    return render(request, 'news/create.html', data)
+    return render(request, 'fish/create.html', data)
 
 
-def result_anime(request):
-    return render(request, 'news/result_anime.html')
 
