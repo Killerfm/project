@@ -11,8 +11,6 @@ def news_home(request):
         if form.is_valid():
             form.save()
             return redirect('/news')
-
-
     return render(request, 'news/news_home.html', {'news': news})
 
 
@@ -30,10 +28,9 @@ def create(request):
     form = FirstTableForm()
     data = {'form': form,
             'error': error}
-
     return render(request, 'news/create.html', data)
 
 
 def result_anime(request):
-    return render(request,'news/result_anime.html')
+    return render(request, 'news/result_anime.html')
 

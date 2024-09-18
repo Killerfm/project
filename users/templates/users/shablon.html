@@ -1,0 +1,20 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>{% block titlecontent %}  {% endblock %}</title>
+    <style>
+         body {
+            background-image: url("{% static 'aut/img/register.png' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: auto;
+        }
+    </style>
+
+</head>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+</html>
